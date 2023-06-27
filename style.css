@@ -1,0 +1,108 @@
+@font-face {
+    font-family: "Lato Regular";
+    src: url("./fonts/Lato/Lato-Regular.ttf");
+}
+
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato Regular"; 
+}
+body {
+    background-color: #2b2b2b;
+    /* background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); */
+    text-align: center;
+    height: 100vh;
+}
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.titre {
+    font-family: "Lato Regular";
+    text-align: center;
+    padding: 20px;
+    text-decoration: underline;
+    font-size: 40px;
+    color: #f1f1f1;
+}
+.align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#result {
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+    border-radius: 20px;
+    background-color: gray;
+    border: none;
+    color: #f1f1f1;
+}
+#copier {
+    background-color: #4287f5;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+    transition-duration: 1s;
+    color: #f1f1f1;
+}
+#copier:hover {
+    cursor: pointer;
+    color: #4287f5;
+    background-color: #f1f1f1;
+    transition-duration: 1s;
+}
+label {
+    font-size: 20px;
+    color: #f1f1f1;
+}
+#long {
+    margin: 20px;
+    margin-right: 30px;
+    width: 300px;
+    cursor: e-resize;
+}
+#taille {
+    background-color: #4287f5;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+    color: #f1f1f1;
+}
+#taille::placeholder {
+    color: #f1f1f1;
+}
+.btn {
+    background-color: #4287f5;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+    color: #f1f1f1;
+    transition-duration: 1s;
+}
+.btn:hover {
+    cursor: pointer;
+    color: #4287f5;
+    background-color: #f1f1f1;
+    transition-duration: 1s;
+}
+
+
+.disclaimer {
+    display: none;
+}
