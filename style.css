@@ -1,108 +1,173 @@
+:root {
+  --blue: #4287f5;
+  --dark-grey: #7a7a7a;
+  --light-grey: #808080;
+  --white: #fff;
+  --red: #990000;
+  --transition-time: 0.3s;
+}
+
 @font-face {
-    font-family: "Lato Regular";
-    src: url("./fonts/Lato/Lato-Regular.ttf");
+  font-family: "Roboto";
+  src: url("./fonts/Roboto-Regular.ttf");
 }
 
-*, ::before, ::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Lato Regular"; 
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
+
 body {
-    background-color: #2b2b2b;
-    /* background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%); */
-    text-align: center;
-    height: 100vh;
+  background-color: #2b2b2b;
+  color: var(--white);
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+
+.generator {
+  width: 80vw;
+  max-width: 800px;
+  border-radius: 5px;
+  padding: 35px;
 }
-.titre {
-    font-family: "Lato Regular";
-    text-align: center;
-    padding: 20px;
-    text-decoration: underline;
-    font-size: 40px;
-    color: #f1f1f1;
+
+.title {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
 }
+
 .align {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
-#result {
-    text-align: center;
-    font-size: 40px;
-    margin: 20px;
-    border-radius: 20px;
-    background-color: gray;
-    border: none;
-    color: #f1f1f1;
-}
-#copier {
-    background-color: #4287f5;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    margin: 20px;
-    transition-duration: 1s;
-    color: #f1f1f1;
-}
-#copier:hover {
-    cursor: pointer;
-    color: #4287f5;
-    background-color: #f1f1f1;
-    transition-duration: 1s;
-}
-label {
-    font-size: 20px;
-    color: #f1f1f1;
-}
-#long {
-    margin: 20px;
-    margin-right: 30px;
-    width: 300px;
-    cursor: e-resize;
-}
+
+#result,
+#long,
 #taille {
-    background-color: #4287f5;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    margin: 20px;
-    color: #f1f1f1;
-}
-#taille::placeholder {
-    color: #f1f1f1;
-}
-.btn {
-    background-color: #4287f5;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
-    margin: 20px;
-    color: #f1f1f1;
-    transition-duration: 1s;
-}
-.btn:hover {
-    cursor: pointer;
-    color: #4287f5;
-    background-color: #f1f1f1;
-    transition-duration: 1s;
+  transition: border var(--transition-time);
 }
 
+#result {
+  width: 100%;
+  min-height: 60px;
+  border: 2px solid --dark-grey;
+  border-radius: 5px;
+  color: var(--white);
+  padding: 15px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  transition: border var(--transition-time);
+  background-color: var(--light-grey);
+  font-family: "Courier New", Courier, monospace;
+  word-wrap: break-word;
+}
 
-.disclaimer {
-    display: none;
+#result:focus,
+#long:focus,
+#taille:focus {
+  border-color: var(--blue);
+}
+
+.button,
+#copier {
+  width: 48%;
+  padding: 15px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--blue);
+  transition: all var(--transition-time) ease;
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+#copier {
+  font-size: 20px;
+  width: 100%;
+}
+
+#copier.error {
+  background-color: var(--red);
+  color: var(--white);
+  animation: shake var(--transition-time);
+  cursor: not-allowed;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0) rotate(0) scale(1);
+  }
+  25% {
+    transform: translateX(-2px) rotate(0.5deg) scale(1.01);
+  }
+  50% {
+    transform: translateX(2px) rotate(-0.5deg) scale(1.02);
+  }
+  75% {
+    transform: translateX(-2px) rotate(0.5deg) scale(1.01);
+  }
+  100% {
+    transform: translateX(0) rotate(0) scale(1);
+  }
+}
+
+button {
+  color: var(--white);
+}
+
+#copier.error:hover {
+  background-color: #9a0000;
+}
+
+.button:hover,
+#copier:hover {
+  background-color: #2a69d0;
+}
+
+#long {
+  border-radius: 4px;
+  width: 90%;
+  padding: 15px;
+}
+
+#taille {
+  text-align: center;
+  border-radius: 4px;
+}
+
+.options {
+  font-weight: bold;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+label {
+  display: block;
+  font-weight: normal;
+}
+
+input[type="checkbox"] {
+  transition: transform var(--transition-time);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.option {
+  gap: 10px;
 }

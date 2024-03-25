@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>XP48 | Générateur de mot de passe</title>
-    <link rel="icon" type="image/jpg" href="../logo.jpg">
-    <script src="main.js"></script>
-</head>
-<body>
-    <div class="cont">
-        <div class="generateur">
-            <h1 class="titre">Générateur de mot de passe</h1>
-            <input type="text" id="result" name="result">
-            <br>
-            <button id="copier" onclick="copy()">Copier📝</button>
-            <br><br>
-            <label for="long">Longueur du mot de passe :</label>
-            <br>
-            <div class="align"><input type="range" name="long" id="long" min="8" max="30" value="12" list="val" onchange="aff_long()"><input type="text" placeholder="12" name="taille" id="taille" size="1" disabled></div>
-            
-            <br>
-            <div class="align"><button class="btn" onclick="generate()">Générer</button><button class="btn" onclick="effacer()">Effacer</button></div>
+    <link rel="icon" type="image/jpg" href="../logo.jpg" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="generator">
+        <h1 class="title">Générateur de mot de passe</h1>
+        <textarea id="result" name="result" readonly></textarea>
+        <button id="copier" onclick="copyToClipboard()">Copier📝</button>
+        <label for="long">Longueur du mot de passe :</label>
+        <div class="align">
+          <input
+            type="range"
+            name="long"
+            id="long"
+            min="6"
+            max="64"
+            value="16"
+            list="val"
+            onchange="updatePasswordLength()"
+          />
+          <p id="taille">16</p>
+        </div>
+
+        <div class="options align">
+          <p>Options :</p>
+          <div class="align option">
+            <input type="checkbox" id="chiffres" checked />
+            <label for="chiffres"> Chiffres</label>
+          </div>
+          <div class="align option">
+            <input type="checkbox" id="caracteresSpeciaux" />
+            <label for="caracteresSpeciaux">Caractères spéciaux</label>
+          </div>
+        </div>
+        <div class="align">
+          <button class="button" onclick="generatePassword()">Générer</button>
+          <button class="button" onclick="clearPassword()">Effacer</button>
         </div>
     </div>
-    
-</body>
+  </body>
 </html>
