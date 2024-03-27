@@ -12,7 +12,7 @@
     <div class="content">
       <div class="generator">
         <h1 class="title">Générateur de mot de passe</h1>
-        <textarea id="result" name="result" readonly></textarea>
+        <input id="result" name="result" readonly></input>
         <button id="copier" onclick="copyToClipboard()">Copier📝</button>
         <label for="long">Longueur du mot de passe :</label>
         <div class="align">
@@ -32,11 +32,11 @@
         <div class="options align">
           <p>Options :</p>
           <div class="align option">
-            <input type="checkbox" id="chiffres" checked />
+            <input type="checkbox" id="chiffres" checked onclick="generatePassword()"/>
             <label for="chiffres"> Chiffres</label>
           </div>
           <div class="align option">
-            <input type="checkbox" id="caracteresSpeciaux" />
+            <input type="checkbox" id="caracteresSpeciaux" checked onclick="generatePassword()"/>
             <label for="caracteresSpeciaux">Caractères spéciaux</label>
           </div>
         </div>

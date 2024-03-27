@@ -69,8 +69,9 @@ body {
   margin-bottom: 20px;
   transition: border var(--transition-time);
   background-color: var(--light-grey);
-  font-family: "Courier New", Courier, monospace;
+  font-family: ""Courier New", Courier, monospace;";
   word-wrap: break-word;
+  text-align: center;
 }
 
 #result:focus,
