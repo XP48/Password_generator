@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Lato";
-  src: url("./fonts/Lato-Regular.ttf");
+  src: url("./fonts/Lato/Lato-Regular.ttf");
 }
 
 *,
@@ -43,6 +43,7 @@ body {
   text-align: center;
   padding: 20px;
   font-weight: bold;
+  margin-bottom: 20%;
 }
 
 .align {
@@ -50,6 +51,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin: 15px;
 }
 
 #result,
@@ -69,7 +71,8 @@ body {
   margin-bottom: 20px;
   transition: border var(--transition-time);
   background-color: var(--light-grey);
-  font-family: ""Courier New", Courier, monospace;";
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
   word-wrap: break-word;
   text-align: center;
 }
@@ -89,7 +92,7 @@ body {
   background-color: var(--blue);
   transition: all var(--transition-time) ease;
   cursor: pointer;
-  margin: 10px 0;
+  margin: 10px 0 5%;
   font-size: 18px;
 }
 
@@ -156,6 +159,7 @@ button {
 label {
   display: block;
   font-weight: normal;
+  font-family: 'Lato';
 }
 
 input[type="checkbox"] {
