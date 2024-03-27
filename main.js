@@ -1,35 +1,63 @@
-caract = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", ",", "?", ".", ";", ":", "/", "!", "§", "*", "-", "+", "&", "~", "#", "'", "{", "}", "(", ")", "[", "]", "_", "^", "¨", "$", "€", "°", "="]
+const numericChars = "1234567890";
+const alphabeticChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const specialChars = ",?.;:/!§*-+&~#'{}()[]_^¨$€°=";
+let allChars = [...numericChars, ...alphabeticChars, ...specialChars];
 
-function choice(liste) {
-    return liste[Math.floor(Math.random() * liste.length)]
-}
+const getRandomItem = (list) => list[Math.floor(Math.random() * list.length)];
 
-function aff_long() {
-    document.getElementById('taille').value = document.getElementById('long').value
-    generate()
-}
+const updatePasswordLength = () => {
+  document.getElementById("taille").innerText =
+    document.getElementById("long").value;
+  generatePassword();
+};
 
-function generate() {
-    pass = []
-    let i = 0;
-    do {
-        i += 1;
-        pass.push(choice(caract));
-    } while (i < document.getElementById('long').value);
-    pass = pass.join('')
-    document.getElementById('result').value = pass
-    document.getElementById('copier').innerText = "Copier📝"
+const generatePassword = () => {
+  allChars = alphabeticChars;
+  if (document.getElementById("chiffres").checked) {
+    allChars += numericChars;
+  }
+  if (document.getElementById("caracteresSpeciaux").checked) {
+    allChars += specialChars;
+  }
+  allChars = [...allChars];
 
-}
+  const length = document.getElementById("long").value;
+  const password = Array.from({ length }, () => getRandomItem(allChars)).join(
+    ""
+  );
 
-function copy() {
-    document.querySelector("#result").select()
-    document.querySelector("#result").setSelectionRange(0, 99999)
-    document.execCommand("copy")
-    document.getElementById('copier').innerText = "Copié ✅"
-}
+  document.getElementById("result").value = password;
+  document.getElementById("copier").innerText = "Copier📝";
+  document.getElementById("copier").classList.remove("error");
+};
 
-function effacer() {
-    document.getElementById('result').value = ''
-}
-// console.log(document.getElementById('long').value)
+const copyToClipboard = async () => {
+  const password = document.querySelector("#result").value;
+
+  try {
+    if (!password) {
+      throw new Error("Le mot de passe est vide");
+    }
+
+    await navigator.clipboard.writeText(password);
+    document.getElementById("copier").innerText = "Copié ✅";
+    setTimeout(() => {
+      document.getElementById("copier").innerText = "Copier📝";
+    }, 3000);
+  } catch (error) {
+    document.getElementById("copier").innerText = "Erreur ❌";
+    document.getElementById("copier").classList.add("error");
+    setTimeout(() => {
+      document.getElementById("copier").classList.remove("error");
+      document.getElementById("copier").innerText = "Copier📝";
+    }, 3000);
+  }
+};
+
+const clearPassword = () => {
+  document.getElementById("result").value = "";
+};
+
+window.onload = () => {
+  updatePasswordLength();
+};
